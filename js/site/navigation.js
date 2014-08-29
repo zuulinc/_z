@@ -6,15 +6,6 @@
 ( function() {
     "use strict";
 
-    /*
-    on click of the button
-        - add the moving class
-        - and the open or closed class
-
-    on transition end
-        - remove the moving class
-     */
-    
     var Navigation = function() {
 
         /**
@@ -30,7 +21,7 @@
             this.$body.on('unmatch:mobile', $.proxy(this.unBindEvents, this));
 
             if (Settings.breakpoint === 0) {
-                this.bindEvents();    
+                this.bindEvents();
             }
 
         }.call(this));
@@ -51,7 +42,7 @@
                 transitionEnd = transEndEventNames[Modernizr.prefixed('transition')];
 
             this.$el.off('click', '.menu-toggle', $.proxy(this._handleClickToggle, this));
-            this.$el.off(transitionEnd, $.proxy(this._handleTransitionEnd, this));    
+            this.$el.off(transitionEnd, $.proxy(this._handleTransitionEnd, this));
         },
 
         /**
@@ -65,15 +56,15 @@
                     'transition': 'transitionend'
                 },
                 transitionEnd = transEndEventNames[Modernizr.prefixed('transition')];
-            
+
             this.$el.on('click', '.menu-toggle', $.proxy(this._handleClickToggle, this));
-            this.$el.on(transitionEnd, $.proxy(this._handleTransitionEnd, this));    
+            this.$el.on(transitionEnd, $.proxy(this._handleTransitionEnd, this));
         },
 
         /**
          * when user clicks on the menu trigger, we add css class that triggers a css transition
          * @param  {Event} evt jQuery Event object
-         * @return {void}     
+         * @return {void}
          */
         _handleClickToggle: function(evt) {
             evt.preventDefault();
@@ -81,7 +72,7 @@
             this.$el.addClass('menu-transitioning');
 
             if (this.$el.hasClass('menu-opened')) {
-                this.$el.removeClass('menu-opened');    
+                this.$el.removeClass('menu-opened');
             } else {
                 this.$el.addClass('menu-opened');
             }
@@ -90,7 +81,7 @@
         /**
          * When the transition finished we need to remove the css class that enables the transitions
          * @param  {Event} evt jQuery Event object
-         * @return {void}     
+         * @return {void}
          */
         _handleTransitionEnd: function(evt) {
             this.$el.removeClass('menu-transitioning');

@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package _s
+ * @package _z
  */
 
 if ( ! function_exists( '_z_paging_nav' ) ) :
