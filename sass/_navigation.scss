@@ -25,10 +25,6 @@
 
 	&.menu-opened {
 		@include transform(translate3d(0,0,0));
-
-		.menu-toggle:before {
-			content: "\e6fd";
-		}
 	}
 
 	&.menu-transitioning {
