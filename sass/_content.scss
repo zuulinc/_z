@@ -43,3 +43,12 @@
 		display: inline-block;
 	}
 }
+
+#commentform {
+	width: 100%;
+
+	textarea {
+		width: 100%;
+		resize: none;
+	}
+}

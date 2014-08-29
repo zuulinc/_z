@@ -15,6 +15,10 @@
     "globals": {
         "wp": true,
         "jQuery": true,
-        "$": true
+        "$": true,
+        "_": true,
+        "Settings": true,
+        "enquire": true,
+        "Modernizr": true
     }
 }

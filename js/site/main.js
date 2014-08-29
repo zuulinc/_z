@@ -1,3 +1,4 @@
+"use strict";
 (function(){
     _.each(Settings.breakpoints, function(breakpoint){
         enquire.register(breakpoint.selector, {

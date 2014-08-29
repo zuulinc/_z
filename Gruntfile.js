@@ -96,7 +96,7 @@ module.exports = function(grunt) {
             },
             all: [
                 'Gruntfile.js',
-                'js/**/*.js',
+                'js/site/**/*.js',
                 '!js/vendor/**/*.js'
             ]
         },

@@ -38,8 +38,11 @@
 
     Navigation.prototype = {
 
+        /**
+         * unbind all the events that have been created
+         * @return {void}
+         */
         unBindEvents: function() {
-            console.log('%cUnbind...', 'background-color:red;color:white;padding:2px;');
             var transEndEventNames = {
                     'WebkitTransition': 'webkitTransitionEnd',
                     'MozTransition': 'transitionend',
@@ -51,21 +54,27 @@
             this.$el.off(transitionEnd, $.proxy(this._handleTransitionEnd, this));    
         },
 
+        /**
+         * bind all the events for the menu
+         * @return {void}
+         */
         bindEvents: function() {
-            console.log('%cbinding...', 'background-color:red;color:white;padding:2px;');
             var transEndEventNames = {
                     'WebkitTransition': 'webkitTransitionEnd',
                     'MozTransition': 'transitionend',
                     'transition': 'transitionend'
                 },
                 transitionEnd = transEndEventNames[Modernizr.prefixed('transition')];
-
-            if (0 === Settings.breakpoint) {
-                this.$el.on('click', '.menu-toggle', $.proxy(this._handleClickToggle, this));
-                this.$el.on(transitionEnd, $.proxy(this._handleTransitionEnd, this));    
-            }
+            
+            this.$el.on('click', '.menu-toggle', $.proxy(this._handleClickToggle, this));
+            this.$el.on(transitionEnd, $.proxy(this._handleTransitionEnd, this));    
         },
 
+        /**
+         * when user clicks on the menu trigger, we add css class that triggers a css transition
+         * @param  {Event} evt jQuery Event object
+         * @return {void}     
+         */
         _handleClickToggle: function(evt) {
             evt.preventDefault();
 
@@ -78,6 +87,11 @@
             }
         },
 
+        /**
+         * When the transition finished we need to remove the css class that enables the transitions
+         * @param  {Event} evt jQuery Event object
+         * @return {void}     
+         */
         _handleTransitionEnd: function(evt) {
             this.$el.removeClass('menu-transitioning');
         }

@@ -2087,6 +2087,14 @@ h4 {
   }
 }
 
+#commentform {
+  width: 100%;
+}
+#commentform textarea {
+  width: 100%;
+  resize: none;
+}
+
 .site-footer {
   background-color: #AAA;
   text-align: center;
