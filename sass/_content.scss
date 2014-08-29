@@ -1,0 +1,45 @@
+#content {
+	z-index: 1;
+	background-color: #FFF;
+
+	.inner-wrap {
+		padding: 200px 20px 20px 20px;	
+	}
+	
+
+	@include breakpoint($bp-tablet) {
+		position: relative;
+		top: auto;
+		left: auto;
+
+		.inner-wrap {
+			padding: 20px;
+		}
+
+		#primary, #secondary {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		#primary {
+			width: 66%;
+		}
+
+		#secondary {
+			margin-left: -4px;
+			width: 34%;
+			padding: 0 25px;
+		}
+	}
+
+	@include breakpoint($bp-tablet) {
+		
+	}
+}
+
+#primary {
+
+	@include breakpoint($bp-tablet) {
+		display: inline-block;
+	}
+}
