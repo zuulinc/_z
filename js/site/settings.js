@@ -13,7 +13,7 @@ var Settings = {
                 Settings.$body.trigger('match:mobile');
             },
             unmatch: function() {
-                Settings.$body.trigger('unmatch:mobile');  
+                Settings.$body.trigger('unmatch:mobile');
             }
         },
         tablet: {
