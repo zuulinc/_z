@@ -1,4 +1,5 @@
 .sass-cache
 node_modules
++js/vendor/modernizr.js
 js/*.min.js
 js/*.min.js.map

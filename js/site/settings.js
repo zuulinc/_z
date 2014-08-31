@@ -9,9 +9,6 @@ var Settings = {
                 Settings.breakpoint = 0;
                 Settings.$body.trigger('match:mobile');
             },
-            setup: function() {
-                Settings.$body.trigger('match:mobile');
-            },
             unmatch: function() {
                 Settings.$body.trigger('unmatch:mobile');
             }

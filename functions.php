@@ -1,8 +1,8 @@
 <?php
 /**
- * _s functions and definitions
+ * _beans functions and definitions
  *
- * @package _z
+ * @package _beans
  */
 
 /**
@@ -12,7 +12,7 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 640; /* pixels */
 }
 
-if ( ! function_exists( '_z_setup' ) ) :
+if ( ! function_exists( '_beans_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -20,15 +20,15 @@ if ( ! function_exists( '_z_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function _z_setup() {
+function _beans_setup() {
 
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on _s, use a find and replace
-	 * to change '_z' to the name of your theme in all the template files
+	 * If you're building a theme based on _beans, use a find and replace
+	 * to change 'beans' to the name of your theme in all the template files
 	 */
-	load_theme_textdomain( '_z', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'beans', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -42,7 +42,7 @@ function _z_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', '_z' ),
+		'primary' => __( 'Primary Menu', 'beans' ),
 	) );
 
 	/*
@@ -62,22 +62,22 @@ function _z_setup() {
 	) );
 
 	// Setup the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( '_z_custom_background_args', array(
+	add_theme_support( 'custom-background', apply_filters( '_beans_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
 }
-endif; // _z_setup
-add_action( 'after_setup_theme', '_z_setup' );
+endif; // _beans_setup
+add_action( 'after_setup_theme', '_beans_setup' );
 
 /**
  * Register widget area.
  *
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  */
-function _z_widgets_init() {
+function _beans_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', '_z' ),
+		'name'          => __( 'Sidebar', 'beans' ),
 		'id'            => 'sidebar-1',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -86,32 +86,44 @@ function _z_widgets_init() {
 		'after_title'   => '</h1>',
 	) );
 }
-add_action( 'widgets_init', '_z_widgets_init' );
+add_action( 'widgets_init', '_beans_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function _z_scripts() {
-	wp_enqueue_style( '_z-style', get_stylesheet_uri() );
+function _beans_scripts() {
 
-	wp_enqueue_script( '_z-modernizr', get_template_directory_uri() . '/js/vendor/modernizr-latest.js', array(), '', true );
-	wp_enqueue_script( '_z-jquery', get_template_directory_uri() . '/js/vendor/jquery-2.1.1.min.js', array(), '', true );
-	wp_enqueue_script( '_z-underscore', get_template_directory_uri() . '/js/vendor/underscore-min.js', array(), '', true );
-	wp_enqueue_script( '_z-enquire', get_template_directory_uri() . '/js/vendor/enquire.min.js', array(), '', true );
+	$host = $_SERVER['HTTP_HOST'];
+	$env = isset($_GET['env']) ? $_GET['env'] : 'dev';
 
-	wp_enqueue_script( '_z-settings', get_template_directory_uri() . '/js/site/settings.js', array(), '', true );
+	wp_enqueue_style( '_beans-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( '_z-site', get_template_directory_uri() . '/js/site/main.js', array(), '20120206', true );
+	if ((FALSE !== strpos($host, 'local') && $env !== 'prod') || $env === 'dev') {
+		wp_enqueue_script( '_beans-modernizr', get_template_directory_uri() . '/js/vendor/modernizr-latest.js', array(), '', true );
+		wp_enqueue_script( '_beans-jquery', get_template_directory_uri() . '/js/vendor/jquery-2.1.1.min.js', array(), '', true );
+		wp_enqueue_script( '_beans-underscore', get_template_directory_uri() . '/js/vendor/underscore-min.js', array(), '', true );
+		wp_enqueue_script( '_beans-enquire', get_template_directory_uri() . '/js/vendor/enquire.min.js', array(), '', true );
 
-	wp_enqueue_script( '_z-navigation', get_template_directory_uri() . '/js/site/navigation.js', array(), '20120206', true );
-
-	wp_enqueue_script( '_z-skip-link-focus-fix', get_template_directory_uri() . '/js/site/skip-link-focus-fix.js', array(), '20130115', true );
+		wp_enqueue_script( '_beans-settings', get_template_directory_uri() . '/js/site/settings.js', array(), '', true );
+		wp_enqueue_script( '_beans-navigation', get_template_directory_uri() . '/js/site/navigation.js', array(), '', true );
+		wp_enqueue_script( '_beans-skip-link-focus-fix', get_template_directory_uri() . '/js/site/skip-link-focus-fix.js', array(), '', true );
+		wp_enqueue_script( '_beans-site', get_template_directory_uri() . '/js/site/main.js', array(), '', true );
+		
+	} else {
+		wp_enqueue_script( '_beans-vendors', get_template_directory_uri() . '/js/vendor.min.js', array(), '', true );
+		wp_enqueue_script( '_beans-site', get_template_directory_uri() . '/js/site.min.js', array(), '', true );
+		
+	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	
+
+	
 }
-add_action( 'wp_enqueue_scripts', '_z_scripts' );
+add_action( 'wp_enqueue_scripts', '_beans_scripts' );
 
 /**
  * Implement the Custom Header feature.

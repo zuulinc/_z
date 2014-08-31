@@ -65,10 +65,14 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     'js/site.min.js': [
-                        'js/site/**/*.js'
+                        'js/site/settings.js',
+                        'js/site/navigation.js',
+                        'js/site/customizer.js',
+                        'js/site/main.js'
                     ],
                     'js/vendor.min.js': [
-                        'js/vendor/**/*.js'
+                        'js/vendor/**/*.js',
+                        '!js/vendor/modernizr-latest.js'
                     ]
                 }
             }
@@ -105,7 +109,7 @@ module.exports = function(grunt) {
 
             dist: {
                 // [REQUIRED] Path to the build you're using for development.
-                "devFile" : "js/modernizr-dev.js",
+                "devFile" : "js/vendor/modernizr-latest.js",
 
                 // [REQUIRED] Path to save out the built file.
                 "outputFile" : "js/vendor/modernizr.js",
@@ -119,23 +123,40 @@ module.exports = function(grunt) {
                     "cssclasses" : true
                 },
 
-                // Based on default settings on http://modernizr.com/download/
-                "extensibility" : {
-                    "addtest" : false,
-                    "prefixed" : false,
-                    "teststyles" : false,
-                    "testprops" : false,
-                    "testallprops" : false,
-                    "hasevents" : false,
-                    "prefixes" : false,
-                    "domprefixes" : false
+                parseFiles: true,
+                files: {
+                    src: [
+                        'js/site/**/*.js'
+                    ]
                 }
             }
 
         }
     });
 
-   
+    grunt.registerTask('watch:dist', function() {
+        var config = {
+            options: {
+                livereload: true
+            },
+            scss: {
+                files: ['sass/**/*.{scss,sass}'],
+                tasks: ['compass:server']
+            },
+            js: {
+                files: '<%= jshint.all %>',
+                tasks: ['jshint', 'modernizr:dist', 'uglify:dist']
+            }
+        };
+
+        grunt.config('watch', config);
+        grunt.task.run('watch');
+    });
+
+    grunt.registerTask('build', [
+        'modernizr:dist',
+        'uglify:dist'
+    ]);
 
     // Default task(s).
     grunt.registerTask('default', ['watch']);

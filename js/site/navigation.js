@@ -20,10 +20,6 @@
             this.$body.on('match:mobile', $.proxy(this.bindEvents, this));
             this.$body.on('unmatch:mobile', $.proxy(this.unBindEvents, this));
 
-            if (Settings.breakpoint === 0) {
-                this.bindEvents();
-            }
-
         }.call(this));
     };
 
