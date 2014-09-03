@@ -41,6 +41,8 @@
 	<a href="#" class="menu-toggle icon-menu2"></a>
 </nav><!-- #site-navigation -->
 
+<?php echo do_shortcode('[z_carousel id=95]'); ?>
+
 <div id="content" class="site-content">
 	<div class="inner-wrap">
 
