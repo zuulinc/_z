@@ -10,7 +10,16 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        
+        paths: {
+            js: {
+                files: [
+                    'Gruntfile.js',
+                    'js/site/**/*.js',
+                    '!js/vendor/**/*.js'
+                ],
+                updated: ['<%= paths.js.files %>']
+            }
+        },
         config: {
             wwwroot: setup.wwwroot
         },
@@ -56,8 +65,11 @@ module.exports = function(grunt) {
             },
 
             js: {
-                files: '<%= jshint.all %>',
-                tasks: ['jshint']
+                files: ['<%= paths.js.files %>'],
+                tasks: ['jshint'],
+                options: {
+                    spawn: false
+                }
             }
         },
 
@@ -98,11 +110,9 @@ module.exports = function(grunt) {
                 jshintrc: '.jshintrc',
                 "force": true
             },
-            all: [
-                'Gruntfile.js',
-                'js/site/**/*.js',
-                '!js/vendor/**/*.js'
-            ]
+            all: {
+                src : ['<%= paths.js.updated %>']
+            }
         },
 
         modernizr: {
@@ -131,6 +141,25 @@ module.exports = function(grunt) {
                 }
             }
 
+        }
+    });
+
+    grunt.event.on('watch', function(action, filepath) {
+        // Determine task based on filepath
+        var get_ext = function(path) {
+            var ret = '';
+            var i = path.lastIndexOf('.');
+            if ( -1 !== i && i <= path.length ) {
+                ret = path.substr(i + 1);
+            }
+            return ret;
+        };
+
+        switch ( get_ext(filepath) ) {
+            // JavaScript
+            case 'js' :
+                grunt.config.set('paths.js.updated', [filepath]);
+                break;
         }
     });
 

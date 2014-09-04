@@ -1,5 +1,5 @@
 "use strict";
-(function(){
+(function() {
     _.each(Settings.breakpoints, function(breakpoint){
         enquire.register(breakpoint.selector, {
             match: function() {
