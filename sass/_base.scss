@@ -2,6 +2,14 @@ html {
 	min-width: 300px;
 } 
 
+body {
+	padding-top: 100px;
+
+	@include breakpoint($bp-desktop) {
+		padding-top: 0;
+	}
+}
+
 * {
 	@include box-sizing(border-box);
 	-webkit-tap-highlight-color: rgba(0,0,0,0);

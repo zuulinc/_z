@@ -1904,6 +1904,15 @@ html {
   min-width: 300px;
 }
 
+body {
+  padding-top: 100px;
+}
+@media (min-width: 61.25em) {
+  body {
+    padding-top: 0;
+  }
+}
+
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2054,7 +2063,7 @@ h4 {
   background-color: #FFF;
 }
 #content .inner-wrap {
-  padding: 200px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
 }
 @media (min-width: 48em) {
   #content {
