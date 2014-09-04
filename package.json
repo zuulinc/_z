@@ -10,6 +10,7 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-modernizr": "^0.5.2",
     "grunt-rsync": "^0.6.2",
+    "grunt-wordpress-setup": "*",
     "load-grunt-tasks": "^0.6.0"
   }
 }

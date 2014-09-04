@@ -5,7 +5,7 @@ html {
 body {
 	padding-top: 100px;
 
-	@include breakpoint($bp-desktop) {
+	@include breakpoint($bp-tablet) {
 		padding-top: 0;
 	}
 }

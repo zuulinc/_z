@@ -20,6 +20,7 @@ module.exports = function(grunt) {
                 updated: ['<%= paths.js.files %>']
             }
         },
+
         config: {
             wwwroot: setup.wwwroot
         },
@@ -141,6 +142,26 @@ module.exports = function(grunt) {
                 }
             }
 
+        },
+
+        activate: {
+            options: {
+                plugins: [
+                    {
+                        source: '/Users/Projects/wordpress/plugins/carousel',
+                        name: 'carousel'
+                    }
+                ],
+                theme: {
+                    source: '/Users/Projects/wordpress/themes/_z',
+                    name: '_z'
+                },
+                wpDIR: '/Users/keith/Sites/wordpress'    
+            },
+            all: {
+
+            }
+            
         }
     });
 
@@ -157,7 +178,7 @@ module.exports = function(grunt) {
 
         switch ( get_ext(filepath) ) {
             // JavaScript
-            case 'js' :
+            case 'js':
                 grunt.config.set('paths.js.updated', [filepath]);
                 break;
         }
