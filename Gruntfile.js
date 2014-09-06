@@ -1,4 +1,6 @@
 "use strict";
+var _ = require('underscore');
+
 module.exports = function(grunt) {
 
     require('load-grunt-tasks')(grunt);
@@ -148,12 +150,24 @@ module.exports = function(grunt) {
             options: {
                 plugins: [
                     {
-                        source: '/Users/Projects/wordpress/plugins/carousel',
-                        name: 'carousel'
+                        source: '/Users/keith/Projects/wordpress/plugins/carousels',
+                        js: {
+                            vendor: ['js/vendor/owl-carousel/owl.carousel.min.js'],
+                            user: ['js/carousel-main.js']
+                        },
+                        name: 'carousels'
+                    },
+                    {
+                        source: '/Users/keith/Projects/wordpress/plugins/foo',
+                        name: 'foo',
+                        js: {
+                            vendor: ['foo.js'],
+                            user: ['site.js']
+                        }
                     }
                 ],
                 theme: {
-                    source: '/Users/Projects/wordpress/themes/_z',
+                    source: '/Users/keith/Projects/wordpress/themes/_z',
                     name: '_z'
                 },
                 wpDIR: '/Users/keith/Sites/wordpress'    
@@ -191,7 +205,7 @@ module.exports = function(grunt) {
             },
             scss: {
                 files: ['sass/**/*.{scss,sass}'],
-                tasks: ['compass:server']
+                tasks: ['compass:server'] 
             },
             js: {
                 files: '<%= jshint.all %>',
@@ -204,9 +218,34 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('build', [
+        'updatejs',
         'modernizr:dist',
         'uglify:dist'
     ]);
+
+    grunt.registerTask('updatejs', 'Updates the vendor scripts from the plugins', function(){
+        var userScripts = grunt.config.get('uglify.dist.files')['js/site.min.js'],
+            vendorScripts = grunt.config.get('uglify.dist.files')['js/vendor.min.js'],
+            plugins = grunt.config.get('activate.options.plugins'),
+            uglify = {};
+
+        _.each(plugins, function(plugin) {
+            _.each(plugin.js.user, function(file){
+                userScripts.push(plugin.source + '/' + file);
+            });
+        });
+
+        _.each(plugins, function(plugin) {
+            _.each(plugin.js.vendor, function(file){
+                vendorScripts.push(plugin.source + '/' + file);
+            });
+        });
+
+        uglify['js/site.min.js'] = userScripts;
+        uglify['js/vendor.min.js'] = vendorScripts;
+
+        grunt.config.set('uglify.dist.files', uglify);
+    });
 
     // Default task(s).
     grunt.registerTask('default', ['watch']);

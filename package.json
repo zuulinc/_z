@@ -11,6 +11,7 @@
     "grunt-modernizr": "^0.5.2",
     "grunt-rsync": "^0.6.2",
     "grunt-wordpress-setup": "*",
-    "load-grunt-tasks": "^0.6.0"
+    "load-grunt-tasks": "^0.6.0",
+    "underscore": "^1.7.0"
   }
 }
