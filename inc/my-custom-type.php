@@ -28,10 +28,10 @@ if(!class_exists('EmailCampaignPostType')) {
     	/**
     	 * hook into WP's add_meta_boxes action hook
     	 */
-    	public function custom_metaboxes() {
+    	public function custom_metaboxes(array $meta_boxes) {
             $prefix = '_custom_type_';
-    		$meta_boxes['test_metabox'] = array(
-                'id'         => 'test_metabox',
+    		$meta_boxes[$prefix.'test_metabox'] = array(
+                'id'         => $prefix.'test_metabox',
                 'title'      => __( 'Test Meta Box', '_z' ),
                 'pages'      => array( 'custom-type', ), // Post type
                 'context'    => 'normal',
@@ -74,19 +74,7 @@ if(!class_exists('EmailCampaignPostType')) {
 
             return $meta_boxes;
     	}
-
 	}
-
-    add_action( 'init', 'ct_initialize_meta_boxes', 9999 );
-    /**
-     * Initialize the metabox class.
-     */
-    function ct_initialize_meta_boxes() {
-
-        if ( ! class_exists( 'cmb_Meta_Box' ) )
-            require_once(sprintf("%s/../inc/cmb/init.php", dirname(__FILE__)));
-
-    }
 
     $customType = new MyCustomType();
 }

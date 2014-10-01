@@ -176,6 +176,21 @@ module.exports = function(grunt) {
 
             }
             
+        },
+
+        browserSync: {
+            dev: {
+                files: {
+                    src: '<%= jshint.all.src.concat(["./**/*.php"]) %>'
+                },
+                bsFiles: {
+                    src : 'style.css'
+                },
+                options: {
+                    proxy: "local.underscorez.ca",
+                    watchTask: true
+                }
+            }
         }
     });
 
@@ -248,6 +263,7 @@ module.exports = function(grunt) {
     });
 
     // Default task(s).
-    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('watch-sync', ['browserSync', 'watch']);
+    grunt.registerTask('default', ['activate', 'watch']);
 
 };
