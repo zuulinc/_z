@@ -2231,3 +2231,134 @@ h4 {
 .site-footer .inner-wrap {
   padding: 15px;
 }
+
+#comments {
+  margin-top: 20px;
+}
+#comments h3 {
+  font-size: 20px;
+  font-size: 1.25rem;
+}
+#comments .logged-in-user {
+  padding: 3px;
+  text-decoration: none;
+}
+#comments .logged-in-user:hover {
+  color: #FFF;
+  text-decoration: none;
+}
+#comments a {
+  text-decoration: none;
+}
+#comments a:hover {
+  text-decoration: underline;
+}
+#comments .form-allowed-tags {
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+#comments code {
+  font-family: Consolas, courier, sans-serif;
+}
+#comments .comment-form-comment {
+  margin: 1rem 0;
+}
+#comments .comment-form-comment textarea {
+  padding: 5px;
+  font-size: 0.8rem;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#comments .form-submit {
+  margin: 1rem 0;
+}
+#comments input[type=text] {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  width: 100%;
+  display: block;
+  padding: 5px;
+  font-size: 0.8rem;
+}
+#comments .comment-notes {
+  margin: 1rem 0;
+}
+#comments .comment-form-author, #comments .comment-form-email, #comments .comment-form-url {
+  display: block;
+  width: 100%;
+  margin: 0 0 2% 0;
+}
+#comments .comment-form-email {
+  margin-right: 0;
+}
+#comments input[type=submit] {
+  border: 0;
+}
+@media (min-width: 48em) {
+  #comments .comment-form-author, #comments .comment-form-email, #comments .comment-form-url {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 2% 2%	0;
+  }
+}
+
+#comments .comment-list {
+  margin: 1rem 0;
+}
+#comments .comment-list li {
+  position: relative;
+  padding-left: 42px;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 1.2;
+}
+#comments .comment-list .fn {
+  font-size: 16px;
+  font-size: 1rem;
+  display: block;
+  font-weight: bold;
+  line-height: 1.6;
+}
+#comments .comment-list .comment-body {
+  font-size: 16px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+#comments .comment-list .comment-date-time {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+#comments .comment-list .comment-meta {
+  margin-bottom: 1rem;
+}
+#comments .comment-list .comment-reply-link {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  text-transform: lowercase;
+  padding: 3px;
+}
+#comments .comment-list .comment-reply-link:hover {
+  color: #FFF;
+  text-decoration: none;
+}
+#comments .comment-list .comment-author {
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+#comments .comment-list .comment-author img {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  display: block;
+  margin: 0;
+}

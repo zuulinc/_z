@@ -1,0 +1,156 @@
+#comments {
+	margin-top: 20px;
+
+	h3 {
+		@include rem(font-size, 20px);
+	}
+
+	.logged-in-user {
+		padding: 3px;
+		text-decoration: none;
+
+		&:hover {
+			color: #FFF;
+			text-decoration: none;
+		}
+	}
+
+	a {
+		
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.form-allowed-tags {
+		@include rem(font-size, 12px);
+		line-height: 1.2;
+	}
+
+	code {
+		font-family: Consolas, courier, sans-serif;
+	}
+
+	.comment-form-comment {
+		margin: 1rem 0;
+
+		textarea {
+			padding: 5px;
+			font-size: 0.8rem;
+			-webkit-border-radius: 5px;
+			   -moz-border-radius: 5px;
+			        border-radius: 5px;
+		}
+	}
+
+	.form-submit {
+		margin: 1rem 0;
+	}
+
+	input[type=text] {
+		-webkit-border-radius: 3px;
+		   -moz-border-radius: 3px;
+		        border-radius: 3px;
+
+		width: 100%;
+		display: block;
+		padding: 5px;
+		font-size: 0.8rem;
+		
+		
+	}
+
+	.comment-notes {
+		margin: 1rem 0;
+	}
+
+	.comment-form-author, .comment-form-email, .comment-form-url {
+		display: block;
+		width: 100%;
+		margin: 0 0 2% 0;
+	}
+
+	.comment-form-email {
+			margin-right: 0;
+	}
+
+	input[type=submit] {
+		border: 0;
+
+	}
+
+	@include breakpoint($bp-tablet) {
+
+		.comment-form-author, .comment-form-email, .comment-form-url {
+			width: 48%;
+			display: inline-block;
+			vertical-align: top;
+			margin: 0 2% 2%	0;
+		}
+	}
+}
+
+#comments .comment-list {
+	margin: 1rem 0;
+
+	li {
+		position: relative;
+		padding-left: 42px;
+		@include rem(font-size, 13px);
+		line-height: 1.2;
+	}
+
+	.fn {
+		@include rem(font-size, 16px);
+		display: block;
+		font-weight: bold;
+		line-height: 1.6;
+	}
+
+	.comment-body {
+		@include rem(font-size, 16px);
+		margin-bottom: 20px;
+	}
+
+	.comment-date-time {
+		text-transform: uppercase;
+		@include rem(font-size, 13px);
+		line-height: 1.6;
+	}
+
+	.comment-meta {
+		margin-bottom: 1rem;
+	}
+
+	.comment-reply-link {
+		@include rem(font-size, 13px);
+		
+		text-transform: lowercase;
+		padding: 3px;
+
+		&:hover {
+			
+			color: #FFF;
+			text-decoration: none;
+		}
+	}
+
+	.comment-author {
+		position: absolute;
+		left: 0;
+		top: 0;
+		-webkit-border-radius: 50%;
+		   -moz-border-radius: 50%;
+		        border-radius: 50%;
+
+		img {
+			-webkit-border-radius: 50%;
+			   -moz-border-radius: 50%;
+			        border-radius: 50%;
+
+			display: block;
+			margin: 0;
+		}
+	}
+}
