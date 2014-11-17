@@ -33,7 +33,7 @@ grunt
 
 ## Server Setup
 - create host,
-- create db
+- create db, copy from the underscorez database ``
 
 After all of the the dependencies are installed you can do a:
 ```bash

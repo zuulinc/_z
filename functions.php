@@ -96,32 +96,18 @@ function _z_scripts() {
 	$host = $_SERVER['HTTP_HOST'];
 	$env = isset($_GET['env']) ? $_GET['env'] : 'dev';
 
-	wp_enqueue_style( '_z-style', get_stylesheet_uri() );
+	wp_enqueue_style( '_mi-style', get_stylesheet_uri() );
 
 	if ((FALSE !== strpos($host, 'local') && $env !== 'prod') || $env === 'dev') {
-		wp_enqueue_script( '_z-modernizr', get_template_directory_uri() . '/js/vendor/modernizr-latest.js', array(), '', true );
-		wp_enqueue_script( '_z-jquery', get_template_directory_uri() . '/js/vendor/jquery-2.1.1.min.js', array(), '', true );
-		wp_enqueue_script( '_z-underscore', get_template_directory_uri() . '/js/vendor/underscore-min.js', array(), '', true );
-		wp_enqueue_script( '_z-enquire', get_template_directory_uri() . '/js/vendor/enquire.min.js', array(), '', true );
-
-		wp_enqueue_script( '_z-settings', get_template_directory_uri() . '/js/site/settings.js', array(), '', true );
-		wp_enqueue_script( '_z-navigation', get_template_directory_uri() . '/js/site/navigation.js', array(), '', true );
-		wp_enqueue_script( '_z-skip-link-focus-fix', get_template_directory_uri() . '/js/site/skip-link-focus-fix.js', array(), '', true );
-		wp_enqueue_script( '_z-site', get_template_directory_uri() . '/js/site/main.js', array(), '', true );
-		
+		wp_enqueue_script( '_mi-modernizr', get_template_directory_uri() . '/js/vendor/modernizr-latest.js', array(), '', true );		
 	} else {
-		wp_enqueue_script( '_z-vendors', get_template_directory_uri() . '/js/vendor.min.js', array(), '', true );
-		wp_enqueue_script( '_z-site', get_template_directory_uri() . '/js/site.min.js', array(), '', true );
-		
+		// wp_enqueue_script( '_mi-vendors', get_template_directory_uri() . '/js/vendor.min.js', array(), '', true );
+		// wp_enqueue_script( '_mi-site', get_template_directory_uri() . '/js/site.min.js', array(), '', true );
 	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
-	}
-
-	
-
-	
+	}	
 }
 add_action( 'wp_enqueue_scripts', '_z_scripts' );
 
@@ -196,3 +182,8 @@ function _z_comment($comment, $args, $depth) {
 	<?php endif; ?>
 <?php
 }
+
+function add_require_js() {
+    echo '<script type="text/javascript" src="'.get_bloginfo( 'template_directory' ).'/js/vendor/require.js" data-main="'.get_bloginfo( 'template_directory' ).'/js/main"></script>';
+}
+add_action('wp_footer', 'add_require_js', 10); // this will be before teh enqueued scripts... hopefully.
