@@ -21,6 +21,10 @@ Change the the repository field and the name
 - Search for  _z (with a space before it) to capture DocBlocks.
 - Search for _z- to capture prefixed handles.
 
+## Update Gruntfile
+- Change the theme name
+- Update the plugins needed
+
 ## Termainal Commands
 
 Once you have those installed do an
@@ -39,3 +43,5 @@ After all of the the dependencies are installed you can do a:
 ```bash
 grunt
 ```
+
+## WordPress Setup 

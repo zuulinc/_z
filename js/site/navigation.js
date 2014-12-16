@@ -34,13 +34,13 @@ define(
                 document.getElementsByTagName("head")[0].appendChild(this.styleElement);
 
                 if (Settings.breakpoint === 0) {
-                    var innerStyles = '#site-navigation { -moz-transform: translate3d(0, '+height+'px, 0); -ms-transform: translate3d(0, '+height+'px, 0); -webkit-transform: translate3d(0, '+height+'px, 0);   transform: translate3d(0, '+height+'px, 0); }';    
+                    // var innerStyles = '#site-navigation { -moz-transform: translate3d(0, '+height+'px, 0); -ms-transform: translate3d(0, '+height+'px, 0); -webkit-transform: translate3d(0, '+height+'px, 0);   transform: translate3d(0, '+height+'px, 0); }';    
 
-                    if (this.styleElement.styleSheet) {
-                        this.styleElement.styleSheet.cssText = innerStyles;
-                    } else {
-                        this.styleElement.innerHTML = innerStyles;
-                    }
+                    // if (this.styleElement.styleSheet) {
+                    //     this.styleElement.styleSheet.cssText = innerStyles;
+                    // } else {
+                    //     this.styleElement.innerHTML = innerStyles;
+                    // }
 
                     this.bindEvents();
                 }
@@ -122,19 +122,19 @@ define(
                     height += 46;
                 }
 
-                if (this.styleElement.styleSheet) {
-                    this.styleElement.styleSheet.cssText = innerStyles;
-                } else {
-                    this.styleElement.innerHTML = innerStyles;
-                }
+                // if (this.styleElement.styleSheet) {
+                //     this.styleElement.styleSheet.cssText = innerStyles;
+                // } else {
+                //     this.styleElement.innerHTML = innerStyles;
+                // }
             },
 
             _unmatchMobile: function(evt) {
-                if (this.styleElement.styleSheet) {
-                    this.styleElement.styleSheet.cssText = '';
-                } else {
-                    this.styleElement.innerHTML = '';
-                }
+                // if (this.styleElement.styleSheet) {
+                //     this.styleElement.styleSheet.cssText = '';
+                // } else {
+                //     this.styleElement.innerHTML = '';
+                // }
             },
 
             _handleMenuItemClick: function(evt) {
