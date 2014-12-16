@@ -50,6 +50,12 @@ module.exports = function(grunt) {
             options: {
                 config: 'config.rb'
             },
+            force: {
+                options: {
+                    force: true,
+                    environment: 'development'
+                }
+            },
             server: {
                 options: {
                     environment: 'development'
